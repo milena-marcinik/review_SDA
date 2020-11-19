@@ -10,6 +10,7 @@ https://www.geeksforgeeks.org/stack-in-python/
 # Stack implementation using list
 """
 
+
 stack = []
 
 # push:
@@ -53,6 +54,13 @@ print(stack_deque.popleft())
 Stack implementation using queue module.
 """
 
+
 from queue import LifoQueue
 
 
+stack_lifo = LifoQueue()
+stack_lifo.put("a")
+stack_lifo.put("b")
+stack_lifo.put("c")
+print(stack_lifo.get())
+print(stack_lifo.qsize())
