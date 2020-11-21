@@ -17,7 +17,3 @@ class Wallet:
         if amount > self.balance:
             raise InsufficientAmount(f"Not enough available to spend {amount}")
         self.balance -= amount
-
-
-w = Wallet(20)
-w.balance
