@@ -1,3 +1,7 @@
+"""
+https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
+"""
+
 import pytest
 from .wallet import Wallet, InsufficientAmount
 
@@ -8,16 +12,21 @@ def empty_wallet():
     return Wallet()
 
 
-# The test function marked with the decorator will then be run once for each set of parameters.
 @pytest.fixture
 def wallet():
     """returns wallet instance with balance 20"""
     return Wallet(20)
 
 
+@pytest.fixture
+def my_wallet():
+    """returns a Wallet instance with a zero balance"""
+    return Wallet()
+
+
+# The test function marked with the decorator will then be run once for each set of parameters.
 @pytest.mark.parametrize("earned, spent, expected", [(30, 20, 10), (20, 2, 18), (40, 5, 35)])
-def test_transactions(earned, spent, expected):
-    my_wallet = Wallet()
+def test_transactions(my_wallet, earned, spent, expected):
     my_wallet.add_cash(earned)
     my_wallet.spend_cash(spent)
     assert my_wallet.balance == expected
