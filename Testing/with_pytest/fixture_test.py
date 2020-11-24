@@ -1,3 +1,7 @@
+"""
+https://docs.pytest.org/en/latest/skipping.html
+"""
+
 import pytest
 
 
