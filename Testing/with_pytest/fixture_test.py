@@ -9,11 +9,16 @@ def numbers():
     return [a, b, c]
 
 
+# This test will run but no traceback will be reported when it fails. Instead, terminal reporting will list it in the
+# “expected to fail”
+@pytest.mark.xfail
 def test_method1(numbers):
     x = 6
     assert numbers[0] == x
 
 
+# The simplest way to skip a test function is to mark it with the skip decorator which may be passed an optional reason:
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_method2(numbers):
     x = 10
     assert numbers[1] == x
